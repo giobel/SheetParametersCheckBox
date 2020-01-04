@@ -54,18 +54,27 @@ namespace SheetParametersCheckBox
                 using (Transaction t  = new Transaction(doc, "Set sheet numbers"))
                 {
                     t.Start();
-
-                    foreach (string sheetNumber in form.checkedItems)
+                    try
                     {
-                        if (form.CheckedByText != null && form.CheckedByText.Length > 0)
+                        foreach (string sheetNumber in form.checkedItems)
                         {
-                            sheetElements[sheetNumber].LookupParameter("Checked By").Set(form.CheckedByText);
+                            if (form.CheckedByText != null && form.CheckedByText.Length > 0)
+                            {
+                                sheetElements[sheetNumber].LookupParameter("Checked By").Set(form.CheckedByText);
+                            }
                         }
                     }
-                    t.Commit();
+                    catch(Exception ex)
+                    {
+                        TaskDialog.Show("Error", ex.Message);
+                    }
+                    finally
+                    {
+                        t.Commit();
+                    }
+
                 }
             }
-
             return Result.Succeeded;
         }
     }
