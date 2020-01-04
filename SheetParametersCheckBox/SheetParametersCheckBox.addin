@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command SheetParametersCheckBox</Text>
+    <Description>Some description for SheetParametersCheckBox</Description>
+    <Assembly>SheetParametersCheckBox.dll</Assembly>
+    <FullClassName>SheetParametersCheckBox.Command</FullClassName>
+    <ClientId>8e9389e4-51de-4a7d-9479-9a641d3fcf7b</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application SheetParametersCheckBox</Name>
+    <Assembly>SheetParametersCheckBox.dll</Assembly>
+    <FullClassName>SheetParametersCheckBox.App</FullClassName>
+    <ClientId>e873dedd-8a6b-462f-abea-12aa93d6d079</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
