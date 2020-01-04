@@ -13,18 +13,21 @@ namespace SheetParametersCheckBox
     public partial class Form1 : Form
     {
         //we will set the content of this list from our macro
-        public List<string> checkedListSource { get; set; } 
+        public List<string> checkedListSource { get; set; }
+        public CheckedListBox.CheckedItemCollection checkedItems { get; set; }
 
         public Form1()
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
            checkedListBox1.DataSource = checkedListSource;
         }
-
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            checkedItems = checkedListBox1.CheckedItems;
+        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -45,7 +48,6 @@ namespace SheetParametersCheckBox
 
             }
         }
-
         public void UncheckAll()
         {
             for (int i = 0; i <= checkedListBox1.Items.Count - 1; i++)
@@ -54,5 +56,6 @@ namespace SheetParametersCheckBox
                 checkedListBox1.SetItemChecked(i, false);
             }
         }
+
     }
 }

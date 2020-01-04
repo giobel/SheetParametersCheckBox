@@ -47,6 +47,8 @@ namespace SheetParametersCheckBox
                 //use ShowDialog to show the form as a modal dialog box. 
                 form.ShowDialog();
 
+                TaskDialog.Show("Count", form.checkedItems.Count.ToString());
+
             }
 
             return Result.Succeeded;
