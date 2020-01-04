@@ -32,12 +32,14 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkedByTbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(12, 247);
+            this.okButton.Location = new System.Drawing.Point(236, 217);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 0;
@@ -48,7 +50,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(219, 247);
+            this.cancelButton.Location = new System.Drawing.Point(317, 217);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -75,11 +77,29 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // checkedByTbox
+            // 
+            this.checkedByTbox.Location = new System.Drawing.Point(236, 35);
+            this.checkedByTbox.Name = "checkedByTbox";
+            this.checkedByTbox.Size = new System.Drawing.Size(100, 20);
+            this.checkedByTbox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(233, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Checked By";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 289);
+            this.ClientSize = new System.Drawing.Size(404, 248);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.checkedByTbox);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.cancelButton);
@@ -99,5 +119,7 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox checkedByTbox;
+        private System.Windows.Forms.Label label1;
     }
 }

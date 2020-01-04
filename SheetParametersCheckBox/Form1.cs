@@ -15,6 +15,7 @@ namespace SheetParametersCheckBox
         //we will set the content of this list from our macro
         public List<string> checkedListSource { get; set; }
         public CheckedListBox.CheckedItemCollection checkedItems { get; set; }
+        public string CheckedByText { get; set; }
 
         public Form1()
         {
@@ -27,6 +28,7 @@ namespace SheetParametersCheckBox
         private void okButton_Click(object sender, EventArgs e)
         {
             checkedItems = checkedListBox1.CheckedItems;
+            CheckedByText = checkedByTbox.Text;
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -26,11 +27,14 @@ namespace SheetParametersCheckBox
 
             List<string> sheetNumberList = new List<string>();
 
+            Dictionary<string, Element> sheetElements = new Dictionary<string, Element>();
+
             FilteredElementCollector fecSheets = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Sheets).WhereElementIsNotElementType();
 
             foreach (ViewSheet viewSheet in fecSheets)
             {
                 sheetNumberList.Add(viewSheet.SheetNumber);
+                sheetElements.Add(viewSheet.SheetNumber, viewSheet);
             }
 
             using (var form = new Form1())
@@ -42,13 +46,24 @@ namespace SheetParametersCheckBox
                 }
 
                 //assing the sheet number list to the check list source
-                form.checkedListSource = sheetNumberList;
+                form.checkedListSource = sheetElements.Keys.ToList();
 
                 //use ShowDialog to show the form as a modal dialog box. 
                 form.ShowDialog();
 
-                TaskDialog.Show("Count", form.checkedItems.Count.ToString());
+                using (Transaction t  = new Transaction(doc, "Set sheet numbers"))
+                {
+                    t.Start();
 
+                    foreach (string sheetNumber in form.checkedItems)
+                    {
+                        if (form.CheckedByText != null && form.CheckedByText.Length > 0)
+                        {
+                            sheetElements[sheetNumber].LookupParameter("Checked By").Set(form.CheckedByText);
+                        }
+                    }
+                    t.Commit();
+                }
             }
 
             return Result.Succeeded;
