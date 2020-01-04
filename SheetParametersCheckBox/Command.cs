@@ -39,17 +39,18 @@ namespace SheetParametersCheckBox
 
             using (var form = new Form1())
             {
-                //if the user hits cancel just drop out
-                if (form.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return Result.Cancelled;
-                }
 
                 //assing the sheet number list to the check list source
                 form.checkedListSource = sheetElements.Keys.ToList();
 
                 //use ShowDialog to show the form as a modal dialog box. 
                 form.ShowDialog();
+
+                //if the user hits cancel just drop out
+                if (form.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    return Result.Cancelled;
+                }
 
                 using (Transaction t  = new Transaction(doc, "Set sheet numbers"))
                 {
