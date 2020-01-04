@@ -24,19 +24,32 @@ namespace SheetParametersCheckBox
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
+            List<string> sheetNumberList = new List<string>();
+
+            FilteredElementCollector fecSheets = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Sheets).WhereElementIsNotElementType();
+
+            foreach (ViewSheet viewSheet in fecSheets)
+            {
+                sheetNumberList.Add(viewSheet.SheetNumber);
+            }
+
             using (var form = new Form1())
             {
-                //use ShowDialog to show the form as a modal dialog box. 
-                form.ShowDialog();
-
                 //if the user hits cancel just drop out
                 if (form.DialogResult == System.Windows.Forms.DialogResult.Cancel)
                 {
                     return Result.Cancelled;
                 }
+
+                //assing the sheet number list to the check list source
+                form.checkedListSource = sheetNumberList;
+
+                //use ShowDialog to show the form as a modal dialog box. 
+                form.ShowDialog();
+
             }
 
-                return Result.Succeeded;
+            return Result.Succeeded;
         }
     }
 }
