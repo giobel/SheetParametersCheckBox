@@ -24,5 +24,35 @@ namespace SheetParametersCheckBox
         {
            checkedListBox1.DataSource = checkedListSource;
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                CheckAll();
+            }
+            else
+            {
+                UncheckAll();
+            }
+        }
+        public void CheckAll()
+        {
+            for (int i = 0; i <= checkedListBox1.Items.Count - 1; i++)
+            {
+                //check item
+                checkedListBox1.SetItemChecked(i, true);
+
+            }
+        }
+
+        public void UncheckAll()
+        {
+            for (int i = 0; i <= checkedListBox1.Items.Count - 1; i++)
+            {
+                //check item
+                checkedListBox1.SetItemChecked(i, false);
+            }
+        }
     }
 }
