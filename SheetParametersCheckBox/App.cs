@@ -26,6 +26,16 @@ namespace SheetParametersCheckBox
                 MessageBox.Show("Failed to add button Sheet Parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            if (AddPushButton(toolsPanel, "btnHelloWorld", "Hello World", "", "pack://application:,,,/SheetParametersCheckBox;component/Resources/sheetParameters.png", "SheetParametersCheckBox.HelloWorld", "Launch the Hello World task dialog") == false)
+            {
+                MessageBox.Show("Failed to add button Sheet Parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            if (AddPushButton(toolsPanel, "btnSheetCopier", "Sheet Copier", "", "pack://application:,,,/SheetParametersCheckBox;component/Resources/sheetParameters.png", "SheetParametersCheckBox.SheetCopier", "SheetCopier test") == false)
+            {
+                MessageBox.Show("Failed to add button Sheet Parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             return Result.Succeeded;
         }
 
