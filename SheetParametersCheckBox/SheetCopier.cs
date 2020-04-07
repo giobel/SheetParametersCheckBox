@@ -157,9 +157,11 @@ namespace SheetParametersCheckBox
 
                         int count = 0;
 
+                        string fmt = "0000.##";
+
                         for (count = startindex; count < endindex + 1; count++)
                         {
-                            Sheets.Add(count.ToString());
+                            Sheets.Add(count.ToString(fmt));
                         }
 
                     }
